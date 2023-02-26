@@ -26,5 +26,14 @@ const teacherMiddle = (req, res, next) => {
       }
 }
 
+const auth2 = async(req,res,next)=>{
+      let id = req.params
+      if(id == req.teacherId )return res.status(403).send({status: false ,message: "You are not authorize"})
+      // let user = await userModel.findById({_id:id})
+      next()
+    
+    }
+    
 
-module.exports = { teacherMiddle }
+
+module.exports = { teacherMiddle, auth2}
